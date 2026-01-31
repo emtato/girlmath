@@ -46,7 +46,7 @@ async def get_star_by_name(user_ID: str, name: str) -> Optional[dict]:
     return serialize_star(star) if star else None
 
 
-async def get_stars_by_constellation(user_id: str, constellation_id: str) -> List[dict]:
+async def get_stars_by_constellation(user_ID: str, constellation_id: str) -> List[dict]:
     """
     Get all stars belonging to a constellation for a specific user.
 
@@ -58,7 +58,7 @@ async def get_stars_by_constellation(user_id: str, constellation_id: str) -> Lis
         List of star documents
     """
     cursor = stars_collection.find({
-        "user_ID": user_id,
+        "user_ID": user_ID,
         "constellation_ID": constellation_id
     })
     stars = []

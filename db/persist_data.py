@@ -72,3 +72,23 @@ async def save_star(star_data: Star) -> dict:
 
     created_star = await star_crud.create_star(star_dict)
     return created_star
+
+async def save_star(star_data: Star) -> dict:
+    """Convert a Star domain entity into the MongoDB document format and persist it."""
+
+    # Database JSON format:
+    # {
+    #   "name": "...",
+    #   "journal_IDs": "...",
+    #   "constellation_ID": "...",
+    # }
+
+    # TODO: maybe normalize the name and stuff, to do later though
+    star_dict = {
+        "name": star_data.name,
+        "journal_IDs": star_data.journal_ids,
+        "constellation_ID": star_data.constellation_id,
+    }
+
+    created_star = await star_crud.create_star(star_dict)
+    return created_star
