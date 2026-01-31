@@ -8,8 +8,8 @@ def convert_ai(data: dict):
     """
     Converts raw request dict into AiInfo domain entity.
     """
-    return AiInfo(data["content"], data["date"], data["read_journal"], data["create_quiz"])
+    return AiInfo(data["user_ID"], data["content"], data["date"], data["read_journal"], data["create_quiz"])
 
 
-def prompt_ai(data: AiInfo):
-    return get_response(data)
+async def prompt_ai(data: AiInfo):
+    return await get_response(data)

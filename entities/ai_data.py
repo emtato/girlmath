@@ -17,11 +17,14 @@ class AiInfo:
     date: int
     read_journal: bool
     read_quizzes: bool
+    user_ID: str
 
-    def __init__(self, content: str, date: int, read_journal: bool, read_quizzes: bool):
+    def __init__(self, user_id: str, content: str, date: int, read_journal: bool, read_quizzes: bool):
+        self.user_ID = user_id
         self.content = content
         self.date = date
         self.read_journal = read_journal
         self.read_quizzes = read_quizzes
+
 
 

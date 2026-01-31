@@ -12,11 +12,14 @@ import os
 from google import genai
 
 from entities.ai_data import AiInfo
+from use_case.convert_time import convert_unix_time
+from use_case.retrieve_quizzes_journals import retrieve_all_quizzes_and_journals
 
 
-def get_response(data: AiInfo):
+async def get_response(data: AiInfo):
     load_dotenv()
-    prompt = """You are a supportive guidance counselor and learning mentor for a girl or young woman in early high school.
+    message = data.content
+    prompt = f"""You are a supportive guidance counselor and learning mentor for a girl or young woman in early high school.
 Your role is to help her build confidence in STEM subjects (especially math and related fields), not by giving answers or generic reassurance, but by creatively helping her work through specific obstacles she is facing.
 
 Important context:
@@ -46,30 +49,71 @@ Avoid:
 - implying innate ability differences
 - overwhelming her with too many suggestions
 - acting like a therapist or diagnosing mental health conditions
+
+Here is the message she sent you: {message}
 """
+    journals, quizzes = await retrieve_all_quizzes_and_journals(data.user_ID)
+
+    for i in range(len(journals)):
+        journals[i] = convert_unix_time(journals[i])
+    for i in range(len(quizzes)):
+        quizzes[i] = convert_unix_time(quizzes[i])
 
     if data.read_journal and data.read_quizzes:
-        prompt += """ \n
+        prompt += f""" \n
         Additional Context: 
         You are allowed to use her past journal reflections and quiz responses to understand patterns in her confidence, emotions, and learning behavior over time.
 Use this context to make your response more specific and personalized, but do not quote private entries verbatim.
 Focus on trends, not individual mistakes.
-(JSON):
+
+    How to use the following data:
+- Journal entries represent her personal reflections and emotions about learning.
+- Quiz/check-in data represents self-reported numerical ratings (confidence, motivation, difficulty, etc.).
+- Use this data to identify patterns, trends, or recurring challenges.
+- Focus on changes over time, repeated themes, and emotional or confidence-related patterns.
+- Use this information only to tailor your guidance, not to judge or evaluate her performance.
+
+Below is structured background data about her past experiences
+This data is provided in JSON-like format for clarity.
+
+JOURNAL ENTRIES (free-text reflections):
+{journals}
+
+QUIZ / CHECK-IN DATA (numerical self-reports):
+{quizzes}
         """
 
     elif not data.read_journal and data.read_quizzes:
-        prompt += """ \n
+        prompt += f""" \n
                 Additional Context: 
                 You are allowed to use her past journal reflections and quiz responses to understand patterns in her confidence, emotions, and learning behavior over time.
         Use this context to make your response more specific and personalized, but do not quote private entries verbatim.
         Focus on trends, not individual mistakes.
+        
+         How to use the following data:
+- Quiz/check-in data represents self-reported numerical ratings (confidence, motivation, difficulty, etc.).
+- Use this data to identify patterns, trends, or recurring challenges.
+- Focus on changes over time, repeated themes, and emotional or confidence-related patterns.
+- Use this information only to tailor your guidance, not to judge or evaluate her performance.
+
+QUIZ / CHECK-IN DATA (numerical self-reports):
+{quizzes}
                 """
 
     elif data.read_journal and not data.read_quizzes:
-        prompt += """ \n
+        prompt += f""" \n
                 Additional Context: 
                 You are allowed to use her quiz and check-in responses (such as confidence, motivation, and difficulty ratings) to understand how she is progressing over time.
 Base your response on observable patterns in her self-reported learning experience.
+
+    How to use the following data:
+- Journal entries represent her personal reflections and emotions about learning.
+- Use this data to identify patterns, trends, or recurring challenges.
+- Focus on changes over time, repeated themes, and emotional or confidence-related patterns.
+- Use this information only to tailor your guidance, not to judge or evaluate her performance.
+
+JOURNAL ENTRIES (free-text reflections):
+{journals}
                 """
 
     else:
@@ -82,8 +126,6 @@ Avoid making assumptions about her history or progress.
 
 
     client = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
-    model_id = "gemini-2.5-flash"
-
 
 
     response = client.models.generate_content(
