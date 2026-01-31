@@ -8,7 +8,8 @@ class QuizEntry:
     Domain Entity for a single quiz check-in
     """
 
-    def __init__(self, date: int, quiz: Dict[str, int], yesterday_goal: bool, tomorrow: str):
+    def __init__(self, id: int, date: int, quiz: Dict[str, int], yesterday_goal: bool, tomorrow: str):
+        self.id = id
         self.date = date              # unix timestamp
         self.quiz = quiz         # e.g. {"confidence": 7, "motivation": 4}
         self.yesterday_goal = yesterday_goal

@@ -6,6 +6,6 @@ from entities.journal import JournalEntry
 def save_journal(data: dict):
     date = data["date"]
     text = data["content"]
-
-    journal = JournalEntry(date, text)
+    id = 0
+    journal = JournalEntry(id, date, text)
     #Database.save(journal) @amande

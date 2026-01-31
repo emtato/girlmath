@@ -4,6 +4,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 
+
 class JournalEntry:
     """
     Entity for a single journal entry.
@@ -14,17 +15,15 @@ class JournalEntry:
     """
     date: int
     content: str
-    def __init__(self, date: int, content: str):
+
+    def __init__(self, id: int, date: int, content: str):
+        self.id = id
         self.date = date
         self.content = content
-
 
     def word_count(self) -> int:
         return len(self.content.split())
 
     def as_dict(self) -> dict:
         # convenient for persistence layers
-        return {
-            "date": self.date,
-            "content": self.content
-        }
+        return {"date": self.date, "content": self.content}
