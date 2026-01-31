@@ -49,7 +49,6 @@ example:
   "date": 1706668800,
   "user_ID": asduguy3bjb32has,
   "context": {
-    "days_back": 7,
     "include_quiz": true,
     "include_journal": true,
 

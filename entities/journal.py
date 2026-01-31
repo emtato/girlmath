@@ -14,15 +14,17 @@ class JournalEntry:
     - `content`: free-form user text
     """
     date: int
+    title: str
     content: str
     id: str
     user_ID: str
     date: int
     content: str
 
-    def __init__(self, id: str, user_ID: str, date: int, content: str):
+    def __init__(self, id: str, title: str, user_ID: str, date: int, content: str):
         self.id = ""
         self.user_ID = user_ID
+        self.title = title
         self.date = date
         self.content = content
 

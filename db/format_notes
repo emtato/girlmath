@@ -1,2 +1,4 @@
 each database user specific collection (i.e. journals, topics, quiz_entries) should
 have an assosiated user_ID = ObjectId("user_id_here") so we can filter it for each specific user.
+
+each journal has a list of star ids, each star has a list of journal ids
