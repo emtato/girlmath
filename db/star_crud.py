@@ -40,7 +40,7 @@ async def get_star_by_name(user_id: str, name: str) -> Optional[dict]:
         Star document if found, None otherwise
     """
     star = await stars_collection.find_one({
-        "user_id": user_id,
+        "user_ID": user_id,
         "name": name
     })
     return serialize_star(star) if star else None
@@ -58,8 +58,8 @@ async def get_stars_by_constellation(user_id: str, constellation_id: str) -> Lis
         List of star documents
     """
     cursor = stars_collection.find({
-        "user_id": user_id,
-        "constellation_id": constellation_id
+        "user_ID": user_id,
+        "constellation_ID": constellation_id
     })
     stars = []
     async for star in cursor:
@@ -69,7 +69,7 @@ async def get_stars_by_constellation(user_id: str, constellation_id: str) -> Lis
 
 async def get_all_user_stars(user_id: str) -> List[dict]:
     """Get all stars for a specific user."""
-    cursor = stars_collection.find({"user_id": user_id})
+    cursor = stars_collection.find({"user_ID": user_id})
     stars = []
     async for star in cursor:
         stars.append(serialize_star(star))
@@ -88,7 +88,7 @@ async def get_journals_for_star(star_id: str) -> List[str]:
     """
     star = await stars_collection.find_one({"_id": ObjectId(star_id)})
     if star:
-        return star.get("journal_ids", [])
+        return star.get("journal_IDs", [])
     return []
 
 
@@ -111,13 +111,13 @@ async def link_star_to_journal(star_id: str, journal_id: str) -> bool:
         # Add journal_id to star's journal_ids array (if not already present)
         await stars_collection.update_one(
             {"_id": ObjectId(star_id)},
-            {"$addToSet": {"journal_ids": journal_id}}
+            {"$addToSet": {"journal_IDs": journal_id}}
         )
 
         # Add star_id to journal's star_ids array (if not already present)
         await journals_collection.update_one(
             {"_id": ObjectId(journal_id)},
-            {"$addToSet": {"star_ids": star_id}}
+            {"$addToSet": {"star_IDs": star_id}}
         )
 
         return True
@@ -141,13 +141,13 @@ async def unlink_star_from_journal(star_id: str, journal_id: str) -> bool:
         # Remove journal_id from star's journal_ids array
         await stars_collection.update_one(
             {"_id": ObjectId(star_id)},
-            {"$pull": {"journal_ids": journal_id}}
+            {"$pull": {"journal_IDs": journal_id}}
         )
 
         # Remove star_id from journal's star_ids array
         await journals_collection.update_one(
             {"_id": ObjectId(journal_id)},
-            {"$pull": {"star_ids": star_id}}
+            {"$pull": {"star_IDs": star_id}}
         )
 
         return True
@@ -169,7 +169,7 @@ async def update_star_constellation(star_id: str, new_constellation_id: str) -> 
     """
     result = await stars_collection.update_one(
         {"_id": ObjectId(star_id)},
-        {"$set": {"constellation_id": new_constellation_id}}
+        {"$set": {"constellation_ID": new_constellation_id}}
     )
 
     if result.modified_count > 0:
@@ -192,8 +192,8 @@ async def delete_star(star_id: str) -> bool:
     try:
         # First remove this star_id from all journals that reference it
         await journals_collection.update_many(
-            {"star_ids": star_id},
-            {"$pull": {"star_ids": star_id}}
+            {"star_IDs": star_id},
+            {"$pull": {"star_IDs": star_id}}
         )
 
         # Then delete the star document

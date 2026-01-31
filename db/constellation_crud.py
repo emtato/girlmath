@@ -36,7 +36,7 @@ async def get_constellation_with_stars(constellation_id: str, user_id: str) -> O
 
         # Get user's stars for this constellation
         cursor = stars_collection.find({
-            "user_id": user_id,
+            "user_ID": user_id,
             "constellation_id": constellation_id
         })
 
@@ -64,7 +64,7 @@ async def get_all_constellations(user_id: Optional[str] = None, include_stars: b
         if include_stars and user_id:
             # Get user's stars for this constellation
             stars_cursor = stars_collection.find({
-                "user_id": user_id,
+                "user_ID": user_id,
                 "constellation_id": str(constellation["_id"])
             })
 
@@ -80,14 +80,14 @@ async def get_all_constellations(user_id: Optional[str] = None, include_stars: b
     return constellations
 
 
-async def delete_constellation(constellation_id: str, reassign_stars_to: Optional[str] = None) -> bool:
-    """Delete a constellation, optionally reassigning its stars to another constellation."""
+async def delete_constellation(constellation_id: str) -> bool:
+    """Delete a constellation. Fails if any stars exist in this constellation."""
     try:
-        if reassign_stars_to:
-            await stars_collection.update_many(
-                {"constellation_id": constellation_id},
-                {"$set": {"constellation_id": reassign_stars_to}}
-            )
+        # Check if any stars exist in this constellation
+        star_count = await stars_collection.count_documents({"constellation_id": constellation_id})
+        if star_count > 0:
+            print(f"Cannot delete constellation: {star_count} stars exist")
+            return False
 
         result = await constellations_collection.delete_one({"_id": ObjectId(constellation_id)})
         return result.deleted_count > 0

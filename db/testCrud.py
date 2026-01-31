@@ -1,7 +1,7 @@
-import asyncio
+from db.setup_indexes import create_indexes
 from db.user_crud import create_user, get_user_by_id, update_user
-from db.journal_crud import create_journal, get_journal_by_id, update_journal
-from db.quiz_crud import create_quiz_entry, get_quiz_entry_by_id, update_quiz_entry
+from db.journal_crud import create_journal, get_journal_by_id, get_user_journals, update_journal
+from db.quiz_crud import create_quiz_entry, get_quiz_entry_by_id, update_quiz_entry, get_user_quiz_entries
 
 
 async def test_crud():
@@ -74,6 +74,20 @@ async def test_crud():
 
     print("entry CRUD test finished.")
 
+    print("Starting other tests...")
+    fetched_entry = await get_user_quiz_entries(user_id)
+    print("Fetched entry:", fetched_entry)
+    fetched_entry = await get_user_journals(user_id)
+    print("Fetched entry:", fetched_entry)
+    print("other tests finished.")
+
 # Run the async test
 if __name__ == "__main__":
-    asyncio.run(test_crud())
+
+    import asyncio
+
+    async def main():
+        await create_indexes()
+        await test_crud()
+
+    asyncio.run(main())

@@ -36,7 +36,6 @@ def receive(data: dict):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-
 @app.post("/ai_request")
 def receive(data: dict):
     try:
@@ -45,7 +44,6 @@ def receive(data: dict):
         return {"response": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
 
 @app.get("/get_quiz")
 def receive(quiz_id: str):

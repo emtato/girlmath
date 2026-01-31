@@ -1,6 +1,7 @@
 from .database import journals_collection
 from bson import ObjectId
 
+
 # helper to convert ObjectId to str
 def serialize_journal(journal) -> dict:
     journal["_id"] = str(journal["_id"])
@@ -66,3 +67,11 @@ async def get_journal_stars(journal_id: str):
     if journal:
         return journal.get("star_ids", [])
     return []
+
+async def get_user_journals(user_id: str) -> list:
+    """Get all journals for a specific user."""
+    cursor = journals_collection.find({"user_ID": user_id}).sort("title", 1)
+    journals = []
+    async for journal in cursor:
+        journals.append(serialize_journal(journal))
+    return journals

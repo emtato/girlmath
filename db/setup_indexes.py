@@ -24,15 +24,15 @@ async def create_indexes():
     print("✓ Users indexes created")
 
     # Journals collection
-    await journals_collection.create_index("user_id")
-    await journals_collection.create_index([("user_id", 1), ("date", -1)])
-    await journals_collection.create_index([("user_id", 1), ("star_ids", 1)])  # Scoped to user
+    await journals_collection.create_index("user_ID")
+    await journals_collection.create_index([("user_ID", 1), ("date", -1)])
+    await journals_collection.create_index([("user_ID", 1), ("star_IDs", 1)])  # Scoped to user
     print("✓ Journals indexes created")
 
     # Stars collection
-    await stars_collection.create_index([("user_id", 1), ("name", 1)], unique=True)
-    await stars_collection.create_index([("user_id", 1), ("constellation_id", 1)])
-    await stars_collection.create_index([("user_id", 1), ("journal_ids", 1)])  # Scoped to user
+    await stars_collection.create_index([("user_ID", 1), ("name", 1)], unique=True)
+    await stars_collection.create_index([("user_ID", 1), ("constellation_ID", 1)])
+    await stars_collection.create_index([("user_ID", 1), ("journal_IDs", 1)])  # Scoped to user
     print("✓ Stars indexes created")
 
     # Constellations collection (global)
@@ -40,8 +40,8 @@ async def create_indexes():
     print("✓ Constellations indexes created")
 
     # Quiz collection
-    await quiz_entries_collection.create_index("user_id")
-    await quiz_entries_collection.create_index([("user_id", 1), ("date", -1)])
+    await quiz_entries_collection.create_index("user_ID")
+    await quiz_entries_collection.create_index([("user_ID", 1), ("date", -1)])
     print("✓ Quiz indexes created")
 
     print("All indexes created successfully!")
