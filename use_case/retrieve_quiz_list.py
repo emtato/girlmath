@@ -3,5 +3,5 @@
 from db.quiz_crud import get_user_quiz_entries
 
 
-def retrieve_quiz_list(user_ID: str):
-    return(get_user_quiz_entries(user_ID))
+async def retrieve_quiz_list(user_ID: str):
+     return(await get_user_quiz_entries(user_ID))
