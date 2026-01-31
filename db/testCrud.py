@@ -8,7 +8,7 @@ async def test_crud():
     print("Starting user CRUD test...")
 
     # --- CREATE ---
-    user_data = {"name": "Emilia", "email": "emilia@example.com"}
+    user_data = {"name": "Amanda", "email": "amanda@test.com"}
     user = await create_user(user_data)
     print("Created user:", user)
 
@@ -19,7 +19,7 @@ async def test_crud():
     print("Fetched user:", fetched_user)
 
     # --- UPDATE ---
-    updated_user = await update_user(user_id, {"email": "amanda.new@example.com"})
+    updated_user = await update_user(user_id, {"email": "amanda.new@test.com"})
     print("Updated user:", updated_user)
 
     # --- DELETE ---
@@ -75,6 +75,15 @@ async def test_crud():
     print("entry CRUD test finished.")
 
     print("Starting other tests...")
+    journal_data = {"user_ID": user_id, "date": 67, "content": "journal test1"}
+    await create_journal(journal_data)
+    journal_data = {"user_ID": user_id, "date": 67, "content": "journal test2"}
+    await create_journal(journal_data)
+    entry_data = {"user_ID": user_id, "date": 67, "content": "entry test1"}
+    await create_quiz_entry(entry_data)
+    entry_data = {"user_ID": user_id, "date": 67, "content": "entry test2"}
+    await create_quiz_entry(entry_data)
+
     fetched_entry = await get_user_quiz_entries(user_id)
     print("Fetched entry:", fetched_entry)
     fetched_entry = await get_user_journals(user_id)

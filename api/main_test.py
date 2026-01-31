@@ -13,12 +13,12 @@ from use_case.prompt_ai import convert_ai
 from use_case.retrieve_journal import retrieve_journal_by_id
 
 app = FastAPI()
-#
-# @app.on_event("startup")
-# async def startup_event():
-#     """Run on server start"""
-#     await create_indexes()
-#     print("✓ Database indexes initialized")
+
+@app.on_event("startup")
+async def startup_event():
+    """Run on server start"""
+    await create_indexes()
+    print("✓ Database indexes initialized")
 
 @app.post("/save_questionnaire")
 def receive(data: dict):

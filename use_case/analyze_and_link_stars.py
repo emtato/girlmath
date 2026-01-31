@@ -139,7 +139,7 @@ async def get_journal_with_stars(journal_id: str) -> Dict[str, Any]:
     return journal
 
 
-async def get_constellation_map(user_id: str) -> Dict[str, Any]:
+async def get_constellation_map(user_ID: str) -> Dict[str, Any]:
     """
     Get the complete constellation map for a user showing all constellations,
     their stars, and the count of journals for each star.
@@ -148,13 +148,13 @@ async def get_constellation_map(user_id: str) -> Dict[str, Any]:
     Constellation -> Stars -> Journal Count
 
     Args:
-        user_id: The user ID
+        user_ID: The user ID
 
     Returns:
         Dictionary with constellation hierarchy
     """
     constellations = await constellation_crud.get_all_constellations(
-        user_id=user_id,
+        user_ID=user_ID,
         include_stars=True
     )
 
@@ -183,7 +183,7 @@ async def get_constellation_map(user_id: str) -> Dict[str, Any]:
     map_data.sort(key=lambda c: c["total_journals"], reverse=True)
 
     return {
-        "user_id": user_id,
+        "user_ID": user_ID,
         "total_constellations": len(map_data),
         "total_stars": sum(c["star_count"] for c in map_data),
         "constellations": map_data

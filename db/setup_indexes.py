@@ -26,7 +26,7 @@ async def create_indexes():
     # Journals collection
     await journals_collection.create_index("user_ID")
     await journals_collection.create_index([("user_ID", 1), ("date", -1)])
-    await journals_collection.create_index([("user_ID", 1), ("star_IDs", 1)])  # Scoped to user
+    await journals_collection.create_index([("user_ID", 1), ("star_ids", 1)])  # Scoped to user
     print("✓ Journals indexes created")
 
     # Stars collection

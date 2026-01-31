@@ -52,7 +52,7 @@ async def get_journals_by_star(star_id: str):
     """
     Get all journals that reference a specific star.
     """
-    cursor = journals_collection.find({"star_ids": star_id})
+    cursor = journals_collection.find({"star_IDs": star_id})
     journals = []
     async for journal in cursor:
         journals.append(serialize_journal(journal))
@@ -65,12 +65,12 @@ async def get_journal_stars(journal_id: str):
     """
     journal = await journals_collection.find_one({"_id": ObjectId(journal_id)})
     if journal:
-        return journal.get("star_ids", [])
+        return journal.get("star_IDs", [])
     return []
 
-async def get_user_journals(user_id: str) -> list:
+async def get_user_journals(user_ID: str):
     """Get all journals for a specific user."""
-    cursor = journals_collection.find({"user_ID": user_id}).sort("title", 1)
+    cursor = journals_collection.find({"user_ID": user_ID}).sort("date", -1)
     journals = []
     async for journal in cursor:
         journals.append(serialize_journal(journal))

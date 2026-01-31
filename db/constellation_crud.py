@@ -37,7 +37,7 @@ async def get_constellation_with_stars(constellation_id: str, user_id: str) -> O
         # Get user's stars for this constellation
         cursor = stars_collection.find({
             "user_ID": user_id,
-            "constellation_id": constellation_id
+            "constellation_ID": constellation_id
         })
 
         stars = []
@@ -53,7 +53,7 @@ async def get_constellation_with_stars(constellation_id: str, user_id: str) -> O
         return None
 
 
-async def get_all_constellations(user_id: Optional[str] = None, include_stars: bool = False) -> List[dict]:
+async def get_all_constellations(user_ID: Optional[str] = None, include_stars: bool = False) -> List[dict]:
     """Get all constellations, optionally with user's stars populated."""
     cursor = constellations_collection.find().sort("name", 1)
     constellations = []
@@ -61,11 +61,11 @@ async def get_all_constellations(user_id: Optional[str] = None, include_stars: b
     async for constellation in cursor:
         constellation["_id"] = str(constellation["_id"])
 
-        if include_stars and user_id:
+        if include_stars and user_ID:
             # Get user's stars for this constellation
             stars_cursor = stars_collection.find({
-                "user_ID": user_id,
-                "constellation_id": str(constellation["_id"])
+                "user_ID": user_ID,
+                "constellation_ID": str(constellation["_id"])
             })
 
             stars = []
@@ -84,7 +84,7 @@ async def delete_constellation(constellation_id: str) -> bool:
     """Delete a constellation. Fails if any stars exist in this constellation."""
     try:
         # Check if any stars exist in this constellation
-        star_count = await stars_collection.count_documents({"constellation_id": constellation_id})
+        star_count = await stars_collection.count_documents({"constellation_ID": constellation_id})
         if star_count > 0:
             print(f"Cannot delete constellation: {star_count} stars exist")
             return False
