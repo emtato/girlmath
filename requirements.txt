@@ -31,8 +31,8 @@ typing_extensions==4.15.0
 urllib3==2.6.3
 websockets==15.0.1
 
-protobuf
+protobuf~=6.33.5
 
-pymongo
+pymongo~=4.16.0
 
-motor
+motor~=3.7.1

@@ -1,4 +1,4 @@
-from database import users_collection
+from .database import users_collection
 from bson import ObjectId
 
 # helper to convert ObjectId to str
