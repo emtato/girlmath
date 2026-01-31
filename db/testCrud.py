@@ -1,5 +1,6 @@
 import asyncio
-from crud import create_user, get_user_by_id, update_user, delete_user
+from db.crud import create_user, get_user_by_id, update_user
+
 
 async def test_crud():
     print("Starting CRUD test...")
