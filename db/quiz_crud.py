@@ -1,4 +1,4 @@
-from database import quiz_entries_collection
+from .database import quiz_entries_collection
 from bson import ObjectId
 
 # helper to convert ObjectId to str
