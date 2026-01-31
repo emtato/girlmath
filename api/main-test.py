@@ -6,11 +6,10 @@ app = FastAPI()
 
 @app.post("/save_questionnaire")
 def receive(data: dict):
-    text = data["message"]
-    return {
-        "reply": f"Backend received: {text}"
-    }
 
+    return{
+        "response": "success"
+    }
 
 @app.post("/save_journal_entry")
 def receive(data: dict):

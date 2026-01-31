@@ -1,7 +1,7 @@
 formatting requirements for inputs
 
 
-1. quiz:
+1. save_quiz:
 question_code is a unique identifier for each question ("confidence", "feel", "motivation", "[custom defined tracking metric]", etc)
 we can have a table to properly map out what each word corresponds to, but this is the best way i can think of to identify questions
 
@@ -48,4 +48,5 @@ example:
   }
 }
 
+4. retrieve journals + quiz history
 
