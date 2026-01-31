@@ -47,7 +47,7 @@ async def save_journal(journal_data: JournalEntry) -> dict:
         "title": getattr(journal_data, "title", None),
         "content": journal_data.content,
         "user_ID": journal_data.user_ID,
-        "date": journal_data.date,
+        "date": int(journal_data.date)
     }
 
     created_journal = await journal_crud.create_journal(journal_dict)
