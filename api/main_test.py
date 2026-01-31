@@ -48,8 +48,8 @@ async def receive(data: dict):
 @app.get("/get_quiz")
 async def receive(quiz_id: str):
     try:
-        await retrieve_quiz_by_id(quiz_id)
-        return {"response": "success"}
+        result = await retrieve_quiz_by_id(quiz_id)
+        return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -57,8 +57,8 @@ async def receive(quiz_id: str):
 @app.get("/get_journal")
 async def receive(journal_id: str):
     try:
-        await retrieve_journal_by_id(journal_id)
-        return {"response": "success"}
+        result = await retrieve_journal_by_id(journal_id)
+        return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

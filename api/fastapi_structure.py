@@ -45,4 +45,4 @@ curl -X POST "http://147.182.158.24:7000/save_journal_entry"\
 
 #  curl -X POST "http://147.182.158.24:7000/save_questionnaire" -H "Content-Type: application/json" -d '{"quiz": {"questino1":6,"question2":7},"date":1706668800,"user_ID":"1adsa2aaf3", "yesterday_goal": 1, "tomorrow": "hi"}'
 
-# GET /get_journal?journal_id=abc123
+curl "http://147.182.158.24:7000/get_journal?journal_id=697e55425bfb420038afbf97"
