@@ -21,52 +21,52 @@ async def startup_event():
     print("✓ Database indexes initialized")
 
 @app.post("/save_questionnaire")
-def receive(data: dict):
+async def receive(data: dict):
     try:
-        save_quiz(data)
+        await save_quiz(data)
         return {"response": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/save_journal_entry")
-def receive(data: dict):
+async def receive(data: dict):
     try:
-        save_journal(data)
-        return {"response": "success"}
+       await save_journal(data)
+       return {"response": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/ai_request")
-def receive(data: dict):
+async def receive(data: dict):
     try:
         newData = convert_ai(data)
-        prompt_ai(newData)
+        await prompt_ai(newData)
         return {"response": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/get_quiz")
-def receive(quiz_id: str):
+async def receive(quiz_id: str):
     try:
-        retrieve_quiz_by_id(quiz_id)
-        return {"response": "success"}
+        result = await retrieve_quiz_by_id(quiz_id)
+        return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/get_journal")
-def receive(journal_id: str):
+async def receive(journal_id: str):
     try:
-        retrieve_journal_by_id(journal_id)
-        return {"response": "success"}
+        result = await retrieve_journal_by_id(journal_id)
+        return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/get_all")
-def receive():
+async def receive(user_ID: str):
     try:
-        retrieve_all_quizzes_and_journals()
-        return {"response": "success"}
+        journals, quizzes = await retrieve_all_quizzes_and_journals(user_ID)
+        return {"journals": journals, "quizzes": quizzes}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

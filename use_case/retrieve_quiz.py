@@ -3,11 +3,13 @@
 
 
 from typing import Optional
+
+from db.quiz_crud import get_quiz_entry_by_id
 from entities.quiz import QuizEntry
 
 
-def retrieve_quiz_by_id(quiz_id: str) -> Optional[dict]:
-    pass
+async def retrieve_quiz_by_id(quiz_id: str) -> dict:
+    return await get_quiz_entry_by_id(quiz_id)
 
 
 
