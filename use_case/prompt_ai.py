@@ -10,7 +10,7 @@ def convert_ai(data: dict):
     """
     return AiInfo(
         content=data["content"],
-        date=data["date"],
+        date = data["date"],
         context=data.get("context")
     )
 
