@@ -31,7 +31,7 @@ async def test_crud():
     print("Starting journal CRUD test...")
 
     # --- CREATE ---
-    journal_data = {"user_ID": user_id, "date": 67, "content": "six seven"}
+    journal_data = {"user_ID": user_id, "date": 67, "content": "BWAHHHHHseven"}
     journal = await create_journal(journal_data)
     print("Created journal:", journal)
 
