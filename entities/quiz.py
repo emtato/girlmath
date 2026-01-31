@@ -15,12 +15,12 @@ class QuizEntry:
         self.tomorrow = tomorrow
 
     def get_metric(self, name: str) -> int | None:
-        return self.values.get(name)
+        return self.quiz.get(name)
 
     def average_score(self) -> float:
-        if not self.values:
+        if not self.quiz:
             return 0.0
-        return sum(self.values.values()) / len(self.values)
+        return sum(self.quiz.values()) / len(self.quiz)
 
     def __repr__(self):
-        return f"QuizEntry(date={self.date}, values={self.values})"
+        return f"QuizEntry(date={self.date}, values={self.quiz})"
