@@ -58,3 +58,7 @@ example:
 4. retrieve journals + quiz history
 
 {"user_ID": "adakjdnakdjAKJDAD"}
+
+
+5. retrieve journal/ quiz:
+{quiz/journal_id: "asndknrnk2jwrjk2"}
