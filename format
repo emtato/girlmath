@@ -1,0 +1,29 @@
+formatting requirements for inputs
+
+
+1. quiz:
+question_code is a unique identifier for each question ("confidence", "feel", "motivation", "[custom defined tracking metric]", etc)
+we can have a table to properly map out what each word corresponds to, but this is the best way i can think of to identify questions
+
+{
+    quiz: {
+        question_code: number[1-10],
+        question_code: number[1-10],
+        ...
+    }
+    yesterday_goal: 1 or 0,
+    tomorrow: str,
+    date: unix timestamp
+}
+
+example:
+{
+  "quiz": {
+    "confidence": 7,
+    "motivation": 4,
+    "focus": 6
+  },
+  "yesterday_goal": 1,
+  "tomorrow": "finish lab",
+  "date": 1706668800
+}
