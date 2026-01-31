@@ -41,11 +41,11 @@ curl -X POST "http://147.182.158.24:7000/save_journal_entry"\
 
 """
 
-#  curl -X POST "http://147.182.158.24:7000/save_journal_entry" -H "Content-Type: application/json" -d '{"title":"MIGUU","content":"hello MIGU!! :D","date":1706668800,"user_ID":"1adsa2aaf3"}'
+#  curl -X POST "http://147.182.158.24:7000/save_journal_entry" -H "Content-Type: application/json" -d '{"title":"MIGUU","content":"hello MIGU!! :D","date":1706668855,"user_ID":"1adsa2aaf3"}'
 
-#  curl -X POST "http://147.182.158.24:7000/save_questionnaire" -H "Content-Type: application/json" -d '{"quiz": {"questino1":6,"question2":7},"date":1706668800,"user_ID":"1adsa2aaf3", "yesterday_goal": 0, "tomorrow": "BYEEEE"}'
+#  curl -X POST "http://147.182.158.24:7000/save_questionnaire" -H "Content-Type: application/json" -d '{"quiz": {"questino1":6,"question2":7},"date":17066648800,"user_ID":"1adsa2aaf3", "yesterday_goal": 0, "tomorrow": "BYEEEE"}'
 
-# curl "http://147.182.158.24:7000/get_journal?journal_id=697e5a6a0c2a9e69c3a41bc1"
+# curl "http://147.182.158.24:7000/get_journal?journal_id=697e68487ac420b8fa5a40a0"
 
 # curl "http://147.182.158.24:7000/get_quiz?quiz_id=697e59de0c2a9e69c3a41bc0"
 

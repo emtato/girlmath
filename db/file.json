@@ -1,0 +1,70 @@
+{
+  "journals": [
+    {
+      "_id": "697e66b07ac420b8fa5a409a",
+      "quiz": {
+        "questino1": 6,
+        "question2": 7
+      },
+      "user_ID": "1adsa2aaf3",
+      "yesterday_goal": 0,
+      "tomorrow": "BYEEEE",
+      "date": 17066648800
+    }, {
+      "_id": "697e59de0c2a9e69c3a41bc0",
+      "quiz": {
+        "questino1": 6,
+        "question2": 7
+      },
+      "user_ID": "1adsa2aaf3",
+      "yesterday_goal": 1,
+      "tomorrow": "hi",
+      "date": 1706668800
+    }, {
+      "_id": "697e5a7e0c2a9e69c3a41bc2",
+      "quiz": {
+        "questino1": 6,
+        "question2": 7
+      },
+      "user_ID": "1adsa2aaf3",
+      "yesterday_goal": 0,
+      "tomorrow": "BYEEEE",
+      "date": 1706668800
+    }
+  ],
+  "quizzes": [
+    {
+      "_id": "697e66b07ac420b8fa5a409a",
+      "quiz": {
+        "questino1": 6,
+        "question2": 7
+      },
+      "user_ID": "1adsa2aaf3",
+      "yesterday_goal": 0,
+      "tomorrow": "BYEEEE",
+      "date": 17066648800
+    }, {
+      "_id": "697e59de0c2a9e69c3a41bc0",
+      "quiz": {
+        "questino1": 6,
+        "question2": 7
+      },
+      "user_ID": "1adsa2aaf3",
+      "yesterday_goal": 1,
+      "tomorrow": "hi",
+      "date": 1706668800
+    }, {
+      "_id": "697e5a7e0c2a9e69c3a41bc2",
+      "quiz": {
+        "questino1": 6,
+        "question2": 7
+      },
+      "user_ID": "1adsa2aaf3",
+      "yesterday_goal": 0,
+      "tomorrow": "BYEEEE",
+      "date": 1706668800
+    }
+  ]
+}root@ellehacks-backend:/opt/api/girlmath#
+
+

@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Dict, Optional
 
 
-@dataclass(frozen=True)
+
 class AiInfo:
     """
     Entity for an AI request.
@@ -15,11 +15,13 @@ class AiInfo:
     """
     content: str
     date: int
-    context: Optional[Dict] = None
+    read_journal: bool
+    read_quizzes: bool
 
-    def as_dict(self) -> dict:
-        return {
-            "content": self.content,
-            "date": self.date,
-            "context": self.context
-        }
+    def __init__(self, content: str, date: int, read_journal: bool, read_quizzes: bool):
+        self.content = content
+        self.date = date
+        self.read_journal = read_journal
+        self.read_quizzes = read_quizzes
+
+

@@ -48,11 +48,10 @@ example:
   "content": "Summarize my week and suggest one habit change.",
   "date": 1706668800,
   "user_ID": asduguy3bjb32has,
-  "context": {
-    "include_quiz": true,
-    "include_journal": true,
+  "include_quiz": true,
+  "include_journal": true,
 
-  }
+
 }
 
 4. retrieve journals + quiz history
