@@ -1,10 +1,10 @@
 # Description: overall file to save every type of data
 # Created by Emilia on 2026-01-31
-
+from entities.constellation import Constellation
 from entities.quiz import QuizEntry
 from entities.journal import JournalEntry
 from entities.star import Star
-from db import quiz_crud, star_crud
+from db import constellation_crud, quiz_crud, star_crud
 from db import journal_crud
 
 
@@ -73,22 +73,18 @@ async def save_star(star_data: Star) -> dict:
     created_star = await star_crud.create_star(star_dict)
     return created_star
 
-async def save_star(star_data: Star) -> dict:
-    """Convert a Star domain entity into the MongoDB document format and persist it."""
+async def save_constellation(constellation_data: Constellation) -> dict:
+    """Convert a Constellation domain entity into the MongoDB document format and persist it."""
 
     # Database JSON format:
     # {
     #   "name": "...",
-    #   "journal_IDs": "...",
-    #   "constellation_ID": "...",
     # }
 
     # TODO: maybe normalize the name and stuff, to do later though
-    star_dict = {
-        "name": star_data.name,
-        "journal_IDs": star_data.journal_ids,
-        "constellation_ID": star_data.constellation_id,
+    constellation_dict = {
+        "name": constellation_data.name,
     }
 
-    created_star = await star_crud.create_star(star_dict)
-    return created_star
+    created_constellation = await constellation_crud.create_constellation(constellation_dict)
+    return created_constellation
