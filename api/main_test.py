@@ -2,7 +2,7 @@
 # Created by Emilia on 2026-01-31
 from fastapi import FastAPI, HTTPException
 
-from ai.gemini import prompt
+
 from db.setup_indexes import create_indexes
 from use_case.retrieve_quiz import retrieve_quiz_by_id
 from use_case.retrieve_quizzes_journals import retrieve_all_quizzes_and_journals
