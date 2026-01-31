@@ -4,6 +4,7 @@
 from . import retrieve_journal_list
 from . import retrieve_quiz_list
 
-def retrieve_all_quizzes_and_journals():
-    journal_list = retrieve_journal_list.retrieve_journal_list()
-    quiz_list = retrieve_quiz_list.retrieve_quiz_list()
+def retrieve_all_quizzes_and_journals(user_ID: str):
+    journal_list = retrieve_journal_list.retrieve_journal_list(user_ID)
+    quiz_list = retrieve_quiz_list.retrieve_quiz_list(user_ID)
+    return journal_list + quiz_list

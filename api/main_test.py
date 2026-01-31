@@ -46,27 +46,27 @@ async def receive(data: dict):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/get_quiz")
-def receive(quiz_id: str):
+async def receive(quiz_id: str):
     try:
-        retrieve_quiz_by_id(quiz_id)
+        await retrieve_quiz_by_id(quiz_id)
         return {"response": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/get_journal")
-def receive(journal_id: str):
+async def receive(journal_id: str):
     try:
-        retrieve_journal_by_id(journal_id)
+        await retrieve_journal_by_id(journal_id)
         return {"response": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/get_all")
-def receive():
+async def receive(user_ID: str):
     try:
-        retrieve_all_quizzes_and_journals()
-        return {"response": "success"}
+        journals, quizzes = await retrieve_all_quizzes_and_journals(user_ID)
+        return {"journals": journals, "quizzes": quizzes}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
