@@ -27,3 +27,25 @@ example:
   "tomorrow": "finish lab",
   "date": 1706668800
 }
+
+
+
+2. journal entry example:
+{
+    content: "mrwooweowoowroe meoowwwww"
+    date: 1706668800
+}
+
+
+3. ai prompt example:
+{
+  "content": "Summarize my week and suggest one habit change.",
+  "date": 1706668800,
+  "context": {
+    "days_back": 7,
+    "include_quiz": true,
+    "include_journal": true
+  }
+}
+
+
