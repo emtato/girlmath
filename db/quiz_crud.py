@@ -31,3 +31,11 @@ async def update_quiz_entry(entry_id: str, update_data: dict):
 async def delete_quiz_entry(entry_id: str):
     result = await quiz_entries_collection.delete_one({"_id": ObjectId(entry_id)})
     return result.deleted_count > 0
+
+async def get_user_quiz_entries(user_id: str):
+    """Get all quiz entries for a specific user."""
+    cursor = quiz_entries_collection.find({"user_ID": user_id}).sort("created_at", -1)
+    quiz_entries = []
+    async for entry in cursor:
+        quiz_entries.append(serialize_quiz_entry(entry))
+    return quiz_entries

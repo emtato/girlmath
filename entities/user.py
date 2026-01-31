@@ -23,11 +23,3 @@ class User:
         self.id = id
         self.name = name
         self.email = email
-
-    def as_dict(self) -> Dict[str, object]:
-        """Return a plain dict representation suitable for persistence or JSON serialization."""
-        return {"id": self.id, "name": self.name, "email": self.email}
-
-    def display_name(self) -> str:
-        """Return a preferred display name for the user (currently the full name)."""
-        return self.name

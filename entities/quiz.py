@@ -15,7 +15,7 @@ class QuizEntry:
     tomorrow: str
 
     def __init__(self, id: str, user_ID: str, date: int, quiz: Dict[str, int], yesterday_goal: bool, tomorrow: str):
-        self.id = 0
+        self.id = ""
         self.user_ID = user_ID
         self.date = date              # unix timestamp
         self.quiz = quiz              # e.g. {"confidence": 7, "motivation": 4}
