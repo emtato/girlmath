@@ -3,7 +3,8 @@
 
 from entities.quiz import QuizEntry
 from entities.journal import JournalEntry
-from db import quiz_crud
+from entities.star import Star
+from db import quiz_crud, star_crud
 from db import journal_crud
 
 
@@ -51,3 +52,23 @@ async def save_journal(journal_data: JournalEntry) -> dict:
 
     created_journal = await journal_crud.create_journal(journal_dict)
     return created_journal
+
+async def save_star(star_data: Star) -> dict:
+    """Convert a Star domain entity into the MongoDB document format and persist it."""
+
+    # Database JSON format:
+    # {
+    #   "name": "...",
+    #   "journal_ids": "...",
+    #   "constellation_id": "...",
+    # }
+
+    # TODO: maybe normalize the name and stuff, to do later though
+    star_dict = {
+        "name": star_data.name,
+        "journal_ids": star_data.journal_ids,
+        "constellation_id": star_data.constellation_id,
+    }
+
+    created_star = await star_crud.create_star(star_dict)
+    return created_star

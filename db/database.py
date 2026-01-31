@@ -15,7 +15,7 @@ db = client[MONGO_DB_NAME]
 #  user specific:
 users_collection = db["users"]
 journals_collection = db["journals"]
-topics_collection = db["topics"]
+stars_collection = db["stars"]
 quiz_entries_collection = db["quiz"]
 #  non-user specific
 constellations_collection = db["constellations"]
