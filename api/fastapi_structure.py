@@ -13,4 +13,4 @@ def receive(data: dict): #automatically parse incoming json to dickt
 
 
 # run fastapi sever
-# uvicorn main:app --host 0.0.0.0 --port 8000
+# /opt/api/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000
