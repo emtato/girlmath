@@ -84,9 +84,11 @@ export async function getAll(user_ID) {
 
 
 //usage example below. MAKE SURE THE INPUT DATA IS EXACTLY AS EXAMPLES. finally, create a file called package.json if not alr, and put inside:
-"{
+"""
+{
   "type": "module"
-}"
+}
+"""
 
 export async function testSaveQuiz() {
   const body = {
