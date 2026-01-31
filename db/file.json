@@ -1,38 +1,84 @@
 {
   "journals": [
     {
-      "_id": "697e68ff449ce0199c8d201c",
-      "user_ID": "697e68fe449ce0199c8d201a",
-      "date": 67,
-      "content": "bleh"
+      "_id": "697e72befc3d7a3d1a8d3d1a",
+      "title": "SAM",
+      "content": "hello MIGU!! :D",
+      "user_ID": "1adsa2aaf3",
+      "date": 67
     }, {
-      "_id": "697e6900449ce0199c8d2023",
-      "user_ID": "697e68fe449ce0199c8d201a",
-      "date": 67,
-      "content": "entry test1"
+      "_id": "697e7244fc3d7a3d1a8d3d19",
+      "title": "HELLLLOOOO",
+      "content": "hello MIGU!! :D",
+      "user_ID": "1adsa2aaf3",
+      "date": 45
     }, {
-      "_id": "697e6900449ce0199c8d2024",
-      "user_ID": "697e68fe449ce0199c8d201a",
-      "date": 67,
-      "content": "entry test2"
+      "_id": "697e7238fc3d7a3d1a8d3d18",
+      "title": "AAAAIAIIAIIAI",
+      "content": "hello MIGU!! :D",
+      "user_ID": "1adsa2aaf3",
+      "date": 34
+    }, {
+      "_id": "697e7228fc3d7a3d1a8d3d17",
+      "title": "EMWOOWOOWWOW",
+      "content": "hello MIGU!! :D",
+      "user_ID": "1adsa2aaf3",
+      "date": 23
     }
   ],
   "quizzes": [
     {
-      "_id": "697e68ff449ce0199c8d201c",
-      "user_ID": "697e68fe449ce0199c8d201a",
-      "date": 67,
-      "content": "bleh"
+      "_id": "697e73e0fc3d7a3d1a8d3d1e",
+      "quiz": {
+        "QUIZ6": 6,
+        "question2": 7
+      },
+      "user_ID": "1adsa2aaf3",
+      "yesterday_goal": 0,
+      "tomorrow": "BYEEEE",
+      "date": 17066648807
     }, {
-      "_id": "697e6900449ce0199c8d2023",
-      "user_ID": "697e68fe449ce0199c8d201a",
-      "date": 67,
-      "content": "entry test1"
+      "_id": "697e73d5fc3d7a3d1a8d3d1d",
+      "quiz": {
+        "QUIZ3": 6,
+        "question2": 7
+      },
+      "user_ID": "1adsa2aaf3",
+      "yesterday_goal": 0,
+      "tomorrow": "BYEEEE",
+      "date": 17066648805
     }, {
-      "_id": "697e6900449ce0199c8d2024",
-      "user_ID": "697e68fe449ce0199c8d201a",
-      "date": 67,
-      "content": "entry test2"
+      "_id": "697e73bdfc3d7a3d1a8d3d1b",
+      "quiz": {
+        "questino1": 6,
+        "question2": 7
+      },
+      "user_ID": "1adsa2aaf3",
+      "yesterday_goal": 0,
+      "tomorrow": "BYEEEE",
+      "date": 17066648800
+    }, {
+      "_id": "697e73c9fc3d7a3d1a8d3d1c",
+      "quiz": {
+        "QUIZ2": 6,
+        "question2": 7
+      },
+      "user_ID": "1adsa2aaf3",
+      "yesterday_goal": 0,
+      "tomorrow": "BYEEEE",
+      "date": 17066648800
     }
   ]
 }root@ellehacks-backend:/opt/api/girlmath#
+
+
+
+
+
+
+
+
+
+
+
+
