@@ -11,7 +11,11 @@ MONGO_DB_NAME = os.getenv("MONGODB_DB")
 client = AsyncIOMotorClient(MONGO_URI, tlsCAFile=certifi.where())
 db = client[MONGO_DB_NAME]
 
-# Example collections
+# collections
+#  user specific:
 users_collection = db["users"]
 journals_collection = db["journals"]
-checkins_collection = db["checkins"]
+topics_collection = db["topics"]
+quiz_entries_collection = db["quiz"]
+#  non-user specific
+constellations_collection = db["constellations"]

@@ -16,7 +16,7 @@ class JournalEntry:
     date: int
     content: str
 
-    def __init__(self, id: int, date: int, content: str):
+    def __init__(self, id: str, user_ID: str, date: int, content: str):
         self.id = id
         self.date = date
         self.content = content
