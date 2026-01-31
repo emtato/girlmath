@@ -14,3 +14,13 @@ def receive(data: dict): #automatically parse incoming json to dickt
 
 # run fastapi sever
 # /opt/api/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000
+# scp -r /Users/emtato/PycharmProjects/girlmath root@147.182.158.24:/opt/api
+
+"""
+scp -r project_root \
+    --exclude venv \
+    --exclude .venv \
+    --exclude .git \
+    --exclude __pycache__ \
+    root@147.182.158.24:/opt/api
+    """
