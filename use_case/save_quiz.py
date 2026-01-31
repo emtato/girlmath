@@ -3,7 +3,7 @@
 from entities.quiz import QuizEntry
 from db import persist_data
 
-def save_quiz(data: dict):
+async def save_quiz(data: dict):
     id = ""
     date = data["date"]
     user_id = data["user_ID"]
@@ -11,6 +11,8 @@ def save_quiz(data: dict):
     yesterday_goal = bool(data["yesterday_goal"])
     tomorrow = data["tomorrow"]
 
-    persist_data.save_quiz(QuizEntry(id, user_id, date, quiz_values, yesterday_goal, tomorrow))
+    await persist_data.save_quiz(QuizEntry(id, user_id, date, quiz_values, yesterday_goal, tomorrow))
+
+
 
 
