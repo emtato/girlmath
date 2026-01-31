@@ -3,10 +3,13 @@
 from fastapi import FastAPI, HTTPException
 
 from ai.gemini import prompt
+from use_case.retrieve_quiz import retrieve_quiz_by_id
+from use_case.retrieve_quizzes_journals import retrieve_all_quizzes_and_journals
 from use_case.save_journal import save_journal
 from use_case.save_quiz import save_quiz
 from use_case.prompt_ai import prompt_ai
 from use_case.prompt_ai import convert_ai
+from use_case.retrieve_journal import retrieve_journal_by_id
 
 app = FastAPI()
 
@@ -35,5 +38,35 @@ def receive(data: dict):
         return {"response": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/get_quiz")
+def receive(quiz_id: str):
+    try:
+        retrieve_quiz_by_id(quiz_id)
+        return {"response": "success"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/get_journal")
+def receive(journal_id: str):
+    try:
+        retrieve_journal_by_id(journal_id)
+        return {"response": "success"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/get_all")
+def receive():
+    try:
+        retrieve_all_quizzes_and_journals()
+        return {"response": "success"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+
 
 

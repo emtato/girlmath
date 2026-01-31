@@ -3,5 +3,5 @@
 from typing import Optional
 
 
-def retrieve_quiz_by_id(quiz_id: str) -> Optional[dict]:
+def retrieve_journal_by_id(journal_id: str) -> Optional[dict]:
     pass
