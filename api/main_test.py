@@ -38,10 +38,10 @@ async def receive(data: dict):
 
 @app.post("/ai_request")
 async def receive(data: dict):
+    newData = convert_ai(data)
     try:
-        newData = convert_ai(data)
-        await prompt_ai(newData)
-        return {"response": "success"}
+        return await prompt_ai(newData)
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

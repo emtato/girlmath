@@ -135,3 +135,21 @@ Avoid making assumptions about her history or progress.
       ]
     )
     print(response.text)
+    return response.text
+
+
+if __name__ == "__main__":
+    from entities.ai_data import AiInfo
+    import asyncio
+
+    test_data = {
+        "content": "THIS IS A TEST OF THE SYSTEM. i am the developer of this app, and im testing the entire integration. please respond to confirm",
+        "date": 1706668800,
+        "user_ID": "1adsa2aaf3",
+        "read_quizzes": True,
+        "read_journal": True
+    }
+
+    ai_info = AiInfo(**test_data)
+
+    asyncio.run(get_response(ai_info))

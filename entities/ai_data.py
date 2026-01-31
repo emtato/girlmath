@@ -19,8 +19,8 @@ class AiInfo:
     read_quizzes: bool
     user_ID: str
 
-    def __init__(self, user_id: str, content: str, date: int, read_journal: bool, read_quizzes: bool):
-        self.user_ID = user_id
+    def __init__(self, user_ID: str, content: str, date: int, read_journal: bool, read_quizzes: bool):
+        self.user_ID = user_ID
         self.content = content
         self.date = date
         self.read_journal = read_journal
