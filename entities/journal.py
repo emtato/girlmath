@@ -15,9 +15,14 @@ class JournalEntry:
     """
     date: int
     content: str
+    id: str
+    user_ID: str
+    date: int
+    content: str
 
     def __init__(self, id: str, user_ID: str, date: int, content: str):
-        self.id = id
+        self.id = ""
+        self.user_ID = user_ID
         self.date = date
         self.content = content
 

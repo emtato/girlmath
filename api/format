@@ -6,11 +6,13 @@ question_code is a unique identifier for each question ("confidence", "feel", "m
 we can have a table to properly map out what each word corresponds to, but this is the best way i can think of to identify questions
 
 {
+
     quiz: {
         question_code: number[1-10],
         question_code: number[1-10],
         ...
     }
+    user_ID: str
     yesterday_goal: 1 or 0,
     tomorrow: str,
     date: unix timestamp
@@ -23,6 +25,7 @@ example:
     "motivation": 4,
     "focus": 6
   },
+  "user_ID": asduguy3bjb32has,
   "yesterday_goal": 1,
   "tomorrow": "finish lab",
   "date": 1706668800
@@ -34,7 +37,9 @@ example:
 {
     title: "asndsakjdnfad"
     content: "mrwooweowoowroe meoowwwww"
-    date: 1706668800
+    date: 1706668800,
+    "user_ID": asduguy3bjb32has
+
 }
 
 
@@ -42,10 +47,12 @@ example:
 {
   "content": "Summarize my week and suggest one habit change.",
   "date": 1706668800,
+  "user_ID": asduguy3bjb32has,
   "context": {
     "days_back": 7,
     "include_quiz": true,
-    "include_journal": true
+    "include_journal": true,
+
   }
 }
 
