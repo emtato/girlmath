@@ -22,9 +22,9 @@ def receive(data: dict):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/save_journal_entry")
-def receive(data: dict):
+async def receive(data: dict):
     try:
-        save_journal(data)
+        await save_journal(data)
         return {"response": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
