@@ -77,7 +77,7 @@ async def receive(user_ID: str):
 async def login(body: dict):
     try:
         usr_dict = await create_user(body)
-        user_id = usr_dict["id"]
+        user_id = usr_dict["_id"]
         return {"user_id": user_id}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
