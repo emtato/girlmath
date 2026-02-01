@@ -14,15 +14,15 @@ class AiInfo:
     - context: raw dict of retrieval options
     """
     content: str
-    date: int
+    #date: int
     read_journal: bool
     read_quizzes: bool
     user_ID: str
 
-    def __init__(self, user_ID: str, content: str, date: int, read_journal: bool, read_quizzes: bool):
+    def __init__(self, user_ID: str, content: str, read_journal: bool, read_quizzes: bool):
         self.user_ID = user_ID
         self.content = content
-        self.date = date
+        #self.date = date
         self.read_journal = read_journal
         self.read_quizzes = read_quizzes
 
