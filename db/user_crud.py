@@ -7,6 +7,21 @@ def serialize_user(user) -> dict:
     return user
 
 # CREATE
+
+async def get_or_create_user(user_data: dict):
+    email = user_data["email"]
+
+    # 1. Try find existing user
+    user = await users_collection.find_one({"email": email})
+    if user:
+        return serialize_user(user)
+
+    # 2. Otherwise create new
+    result = await users_collection.insert_one(user_data)
+    user = await users_collection.find_one({"_id": result.inserted_id})
+    return serialize_user(user)
+
+
 async def create_user(user_data: dict):
     result = await users_collection.insert_one(user_data)
     user = await users_collection.find_one({"_id": result.inserted_id})

@@ -4,7 +4,7 @@ from fastapi import FastAPI, HTTPException
 
 
 from db.setup_indexes import create_indexes
-from db.user_crud import create_user
+from db.user_crud import create_user, get_or_create_user
 from use_case.retrieve_quiz import retrieve_quiz_by_id
 from use_case.retrieve_quizzes_journals import retrieve_all_quizzes_and_journals
 from use_case.save_journal import save_journal
@@ -76,7 +76,7 @@ async def receive(user_ID: str):
 @app.post("/login")
 async def login(body: dict):
     try:
-        usr_dict = await create_user(body)
+        usr_dict = await get_or_create_user(body)
         user_id = usr_dict["_id"]
         return {"user_id": user_id}
     except Exception as e:
