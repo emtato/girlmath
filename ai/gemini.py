@@ -125,7 +125,7 @@ Avoid making assumptions about her history or progress.
                 """
 
 
-    client = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
+    client = genai.Client(api_key=os.environ["GOOGLE_API_KEY2"])
 
 
     response = client.models.generate_content(
@@ -182,7 +182,7 @@ Output: slow progress
 Now process this journal entry:
 {journal}"""
 
-    client = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
+    client = genai.Client(api_key=os.environ["GOOGLE_API_KEY2"])
 
 
     response = client.models.generate_content(

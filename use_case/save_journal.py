@@ -11,6 +11,6 @@ async def save_journal(data: dict):
     user_id = data["user_ID"]
     text = data["content"]
     id = ""
-    prompt_ai(JournalEntry(id, title, user_id, date, text))
+    #prompt_ai(JournalEntry(id, title, user_id, date, text))
     return await persist_data.save_journal(JournalEntry(id, title, user_id, date, text))
 

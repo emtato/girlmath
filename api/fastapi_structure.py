@@ -32,6 +32,8 @@ scp -r project_root \
 # python -m pip install "uvicorn[standard]"
 # which uvicorn
 
+# ./venv/bin/uvicorn api.main_test:app --host 0.0.0.0 --port 7000
+
 
 """  
        
