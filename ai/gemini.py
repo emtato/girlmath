@@ -138,18 +138,58 @@ Avoid making assumptions about her history or progress.
     return response.text
 
 
-if __name__ == "__main__":
-    from entities.ai_data import AiInfo
-    import asyncio
 
-    test_data = {
-        "content": "THIS IS A TEST OF THE SYSTEM. i am the developer of this app, and im testing the entire integration. please respond to confirm",
-        "date": 1706668800,
-        "user_ID": "1adsa2aaf3",
-        "read_quizzes": True,
-        "read_journal": True
-    }
 
-    ai_info = AiInfo(**test_data)
 
-    asyncio.run(get_response(ai_info))
+def ai_keywords(journal: str):
+    prompt = f"""
+You are an information extraction assistant.
+
+Task:
+Given ONE journal entry about learning / school / confidence, output a “micro-summary” of the entry as a short phrase of MAX 3 words.
+
+Rules (must follow):
+- Output ONLY the micro-summary phrase. No quotes, no punctuation, no extra commentary.
+- MAX 3 words total, but prefer 2 or less.
+- Use lowercase.
+- Prefer a “theme phrase” over a generic topic word.
+  Bad: "math", "school", "studying"
+  Good: "overcoming fractions", "test anxiety", "concept click"
+- Choose words that reflect the *direction* of the entry:
+  - success / breakthrough → use patterns like:
+    "overcoming X", "concept click", "confidence boost", "solved X"
+  - failure / setback → use patterns like:
+    "setback X", "confidence dip", "mistake spiral", "burnout"
+  - struggling but progressing → use patterns like:
+    "making progress", "slow progress", "learning curve", "steady practice"
+  - stress / emotions → use patterns like:
+    "test anxiety", "imposter feelings", "pressure overload", "self doubt"
+  - motivation / habits → use patterns like:
+    "study routine", "procrastination loop", "focus issues", "time management"
+- “X” should be the most specific topic mentioned (fractions, factoring, vectors, proofs, etc.). If no specific topic exists, use an emotion/habit theme instead.
+- Avoid names, dates, filler words, and vague terms.
+
+Examples (input → output):
+Input: "I finally understood factoring after struggling all week. I feel proud."
+Output: overcoming factoring
+
+Input: "I bombed the quiz and now I feel like I'm not cut out for math."
+Output: confidence dip
+
+Input: "I still don't get limits, but today I improved a bit and kept going."
+Output: slow progress
+
+Now process this journal entry:
+{journal}"""
+
+    client = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
+
+
+    response = client.models.generate_content(
+      model="gemini-3-flash-preview",
+      contents=[
+          prompt
+      ]
+    )
+    print(response.text)
+    return response.text
