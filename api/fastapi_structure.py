@@ -32,7 +32,16 @@ scp -r project_root \
 # python -m pip install "uvicorn[standard]"
 # which uvicorn
 
-# ./venv/bin/uvicorn api.main_test:app --host 0.0.0.0 --port 7000
+
+
+
+# RUN SERVER ------------------------------------------------------------------------
+#ssh into server
+#clone repo
+
+#  cd /opt/api/girlmath
+
+#  ./venv/bin/uvicorn api.main_test:app --host 0.0.0.0 --port 7000
 
 
 """  
