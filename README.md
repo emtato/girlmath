@@ -26,6 +26,7 @@ Backend
 * FastAPI
 * MongoDB
 * Google Gemini API
+* Uvicorn
   
 Frontend
 
