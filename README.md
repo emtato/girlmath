@@ -1,8 +1,8 @@
 # GirlMath
 [🌐 View on Devpost](https://devpost.com/software/girlmath-b5y7ao) • [🎥 Watch the Demo](https://www.youtube.com/watch?v=r2qMN9JFBvw)         
 
-<img width="395" height="748" alt="image" src="https://github.com/user-attachments/assets/166c88da-5844-4edb-9dd9-44145663ee94" />
-<img width="394" height="747" alt="image" src="https://github.com/user-attachments/assets/ee61e3cd-8a60-42ed-ae34-30a15e816e8c" />
+<img width="1950" height="1726" alt="girmath" src="https://github.com/user-attachments/assets/a7543f48-c7e0-4804-9958-789d3302cc30" />
+
 
 GirlMath is a mobile app built at ElleHacks 2026 to help girls build confidence in math and STEM through reflection, progress tracking, and personalized AI guidance.
 
